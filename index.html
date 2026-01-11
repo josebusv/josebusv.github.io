@@ -1,505 +1,549 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>José Luis Bustos Valencia - Desarrollador Full Stack & Coordinador de Desarrollo</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      José Luis Bustos Valencia - Desarrollador Full Stack & Coordinador de
+      Desarrollo
+    </title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1e40af;
-            --secondary: #64748b;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --border: #e2e8f0;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1e40af;
+        --secondary: #64748b;
+        --dark: #0f172a;
+        --light: #f8fafc;
+        --border: #e2e8f0;
+        --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background: var(--light);
-        }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark);
+        background: var(--light);
+      }
 
-        .header {
-            background: var(--gradient);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+      .header {
+        background: var(--gradient);
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
+      .header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        opacity: 0.3;
+      }
 
-        .header-content {
-            position: relative;
-            z-index: 1;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+      .header-content {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .subtitle {
+        font-size: 1.3rem;
+        opacity: 0.95;
+        margin-bottom: 2rem;
+      }
+
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        backdrop-filter: blur(10px);
+        transition: transform 0.3s ease;
+      }
+
+      .contact-item:hover {
+        transform: translateY(-3px);
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .contact-item a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .section {
+        background: white;
+        margin: 2rem 0;
+        padding: 2.5rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .section-title {
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid var(--primary);
+        display: inline-block;
+      }
+
+      .profile-text {
+        font-size: 1.1rem;
+        color: var(--secondary);
+        line-height: 1.8;
+        text-align: justify;
+      }
+
+      .experience-item,
+      .education-item {
+        margin-bottom: 2rem;
+        padding-left: 1.5rem;
+        border-left: 3px solid var(--primary);
+        position: relative;
+      }
+
+      .experience-item::before {
+        content: "";
+        position: absolute;
+        left: -8px;
+        top: 0;
+        width: 13px;
+        height: 13px;
+        background: var(--primary);
+        border-radius: 50%;
+        border: 3px solid white;
+      }
+
+      .job-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 0.3rem;
+      }
+
+      .company {
+        font-size: 1.1rem;
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+      }
+
+      .date {
+        font-size: 0.95rem;
+        color: var(--secondary);
+        font-style: italic;
+        margin-bottom: 1rem;
+      }
+
+      .responsibilities {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .responsibilities li {
+        padding: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+        color: var(--secondary);
+      }
+
+      .responsibilities li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+        font-weight: bold;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .skill-category {
+        background: var(--light);
+        padding: 1.5rem;
+        border-radius: 10px;
+        border: 2px solid var(--border);
+        transition: border-color 0.3s ease;
+      }
+
+      .skill-category:hover {
+        border-color: var(--primary);
+      }
+
+      .skill-category h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .skill-tag {
+        background: white;
+        color: var(--dark);
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+      }
+
+      .skill-tag:hover {
+        background: var(--primary);
+        color: white;
+        transform: scale(1.05);
+      }
+
+      .repos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .repo-card {
+        background: var(--light);
+        padding: 2rem;
+        border-radius: 12px;
+        border: 2px solid var(--border);
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+        display: block;
+      }
+
+      .repo-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+      }
+
+      .repo-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .repo-card h3 {
+        color: var(--dark);
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .repo-card p {
+        color: var(--secondary);
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .repo-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .repo-tag {
+        background: white;
+        color: var(--primary);
+        padding: 0.3rem 0.7rem;
+        border-radius: 15px;
+        font-size: 0.85rem;
+        border: 1px solid var(--primary);
+        font-weight: 500;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 2rem;
+        background: var(--dark);
+        color: white;
+        margin-top: 3rem;
+      }
+
+      @media (max-width: 768px) {
         h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+          font-size: 2rem;
         }
 
         .subtitle {
-            font-size: 1.3rem;
-            opacity: 0.95;
-            margin-bottom: 2rem;
+          font-size: 1rem;
         }
 
         .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255,255,255,0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-3px);
-            background: rgba(255,255,255,0.3);
-        }
-
-        .contact-item a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+          gap: 1rem;
         }
 
         .section {
-            background: white;
-            margin: 2rem 0;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-        }
-
-        .section-title {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid var(--primary);
-            display: inline-block;
-        }
-
-        .profile-text {
-            font-size: 1.1rem;
-            color: var(--secondary);
-            line-height: 1.8;
-            text-align: justify;
-        }
-
-        .experience-item, .education-item {
-            margin-bottom: 2rem;
-            padding-left: 1.5rem;
-            border-left: 3px solid var(--primary);
-            position: relative;
-        }
-
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            left: -8px;
-            top: 0;
-            width: 13px;
-            height: 13px;
-            background: var(--primary);
-            border-radius: 50%;
-            border: 3px solid white;
-        }
-
-        .job-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 0.3rem;
-        }
-
-        .company {
-            font-size: 1.1rem;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .date {
-            font-size: 0.95rem;
-            color: var(--secondary);
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-
-        .responsibilities {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .responsibilities li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            color: var(--secondary);
-        }
-
-        .responsibilities li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
+          padding: 1.5rem;
         }
 
         .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+          grid-template-columns: 1fr;
         }
+      }
 
-        .skill-category {
-            background: var(--light);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border: 2px solid var(--border);
-            transition: border-color 0.3s ease;
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
-
-        .skill-category:hover {
-            border-color: var(--primary);
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
 
-        .skill-category h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background: white;
-            color: var(--dark);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            background: var(--primary);
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .repos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .repo-card {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 2px solid var(--border);
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-            display: block;
-        }
-
-        .repo-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
-        }
-
-        .repo-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .repo-card h3 {
-            color: var(--dark);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .repo-card p {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .repo-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .repo-tag {
-            background: white;
-            color: var(--primary);
-            padding: 0.3rem 0.7rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            border: 1px solid var(--primary);
-            font-weight: 500;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 2rem;
-            background: var(--dark);
-            color: white;
-            margin-top: 3rem;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .subtitle {
-                font-size: 1rem;
-            }
-
-            .contact-info {
-                gap: 1rem;
-            }
-
-            .section {
-                padding: 1.5rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section {
-            animation: fadeIn 0.6s ease-out;
-        }
+      .section {
+        animation: fadeIn 0.6s ease-out;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header class="header">
-        <div class="header-content">
-            <h1>José Luis Bustos Valencia</h1>
-            <p class="subtitle">Coordinador de Desarrollo | Desarrollador Full Stack | Especialista en Laravel</p>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <span>📧</span>
-                    <a href="mailto:josebusv@gmail.com">josebusv@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                    <span>📱</span>
-                    <span>317-342-9713</span>
-                </div>
-                <div class="contact-item">
-                    <span>💼</span>
-                    <a href="https://www.linkedin.com/in/jose-luis-bustos-valencia/" target="_blank">LinkedIn</a>
-                </div>
-
-            </div>
+      <div class="header-content">
+        <h1>José Luis Bustos Valencia</h1>
+        <p class="subtitle">
+          Coordinador de Desarrollo | Desarrollador Full Stack | Especialista en
+          Laravel
+        </p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span>📧</span>
+            <a href="mailto:josebusv@gmail.com">josebusv@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <span>📱</span>
+            <span>317-342-9713</span>
+          </div>
+          <div class="contact-item">
+            <span>💼</span>
+            <a
+              href="https://www.linkedin.com/in/jose-luis-bustos-valencia/"
+              target="_blank"
+              >LinkedIn</a
+            >
+          </div>
         </div>
+      </div>
     </header>
 
     <div class="container">
-        <section class="section">
-            <h2 class="section-title">Perfil Profesional</h2>
-            <p class="profile-text">
-                Profesional con más de 10 años de experiencia en desarrollo de software y actualmente Coordinador del Área de Desarrollo. Experiencia en la creación de aplicaciones web robustas utilizando Laravel, jQuery y bases de datos SQL. Liderazgo y gestión de proyectos complejos, desde la concepción hasta la implementación exitosa.
-            </p>
-            <br>
-            <p class="profile-text">
-                <strong>Orientación al Crecimiento y Producto:</strong> Liderazgo de equipos y gestión eficiente de recursos y comunicación para entregas de alta calidad. Mi perfil combina la capacidad de dirección técnica con la visión estratégica de negocio.
-            </p>
-            <br>
-            <p class="profile-text">
-                <strong>Enfoque en IA y Conversacional:</strong> Cursando una Especialización en Inteligencia Artificial, alineado con la innovación y las mejores prácticas del sector.
-            </p>
-        </section>
+      <section class="section">
+        <h2 class="section-title">Perfil Profesional</h2>
+        <p class="profile-text">
+          Profesional con más de 10 años de experiencia en desarrollo de
+          software y actualmente Coordinador del Área de Desarrollo. Experiencia
+          en la creación de aplicaciones web robustas utilizando Laravel, jQuery
+          y bases de datos SQL. Liderazgo y gestión de proyectos complejos,
+          desde la concepción hasta la implementación exitosa.
+        </p>
+        <br />
+        <p class="profile-text">
+          <strong>Orientación al Crecimiento y Producto:</strong> Liderazgo de
+          equipos y gestión eficiente de recursos y comunicación para entregas
+          de alta calidad. Mi perfil combina la capacidad de dirección técnica
+          con la visión estratégica de negocio.
+        </p>
+        <br />
+        <p class="profile-text">
+          <strong>Enfoque en IA y Conversacional:</strong> Cursando una
+          Especialización en Inteligencia Artificial, alineado con la innovación
+          y las mejores prácticas del sector.
+        </p>
+      </section>
 
-        <section class="section">
-            <h2 class="section-title">Experiencia Laboral</h2>
-            
-            <div class="experience-item">
-                <h3 class="job-title">Coordinador de Desarrollo</h3>
-                <p class="company">DISTRIBUCIONES AXA SAS, Bogotá</p>
-                <p class="date">Agosto 2022 – Actual</p>
-                <ul class="responsibilities">
-                    <li>Acompañamiento al área de proyectos en el levantamiento de iniciativas y requerimientos</li>
-                    <li>Coordinación y seguimiento a las labores de desarrollo del equipo a cargo</li>
-                    <li>Apoyo en el desarrollo de scripts en PHP Framework Laravel</li>
-                    <li>Liderazgo de Integraciones Clave: Diseño de la integración con APIs bancarias para gestión de recaudo, integrándolo con el ERP NetSuite para la creación de pagos</li>
-                    <li>Participación en proyectos de integración con la plataforma VTEX y una plataforma TMS</li>
-                </ul>
+      <section class="section">
+        <h2 class="section-title">Experiencia Laboral</h2>
+
+        <div class="experience-item">
+          <h3 class="job-title">Coordinador de Desarrollo</h3>
+          <p class="company">DISTRIBUCIONES AXA SAS, Bogotá</p>
+          <p class="date">Agosto 2022 – Actual</p>
+          <ul class="responsibilities">
+            <li>
+              Acompañamiento al área de proyectos en el levantamiento de
+              iniciativas y requerimientos
+            </li>
+            <li>
+              Coordinación y seguimiento a las labores de desarrollo del equipo
+              a cargo
+            </li>
+            <li>Apoyo en el desarrollo de scripts en PHP Framework Laravel</li>
+            <li>
+              Liderazgo de Integraciones Clave: Diseño de la integración con
+              APIs bancarias para gestión de recaudo, integrándolo con el ERP
+              NetSuite para la creación de pagos
+            </li>
+            <li>
+              Participación en proyectos de integración con la plataforma VTEX y
+              una plataforma TMS
+            </li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <h3 class="job-title">Desarrollador Web</h3>
+          <p class="company">DISTRIBUCIONES AXA SAS, Bogotá</p>
+          <p class="date">Enero 2022 – Julio 2022</p>
+          <ul class="responsibilities">
+            <li>
+              Análisis de requerimientos y diseño de soluciones usando PHP
+              (Laravel y Lumen)
+            </li>
+            <li>Diseño de bases de datos y documentación de código</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <h3 class="job-title">Analista de Operaciones</h3>
+          <p class="company">GRM COLOMBIA SAS, Bogotá</p>
+          <p class="date">Junio 2021 – Diciembre 2021</p>
+          <ul class="responsibilities">
+            <li>Validación de índices electrónicos</li>
+            <li>Generación de informes del área de gestión documental</li>
+            <li>Apoyo en la actualización del SGD Visual Vault</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <h3 class="job-title">Desarrollador PHP Freelance</h3>
+          <p class="company">CS PRODUCTIONS SAS, Bogotá</p>
+          <p class="date">Mayo 2013 – Junio 2021</p>
+          <ul class="responsibilities">
+            <li>
+              Diseño, desarrollo (Lenguaje PHP - Laravel), parametrización y
+              levantamiento de requerimientos
+            </li>
+            <li>
+              Documentación del desarrollo, realización de pruebas, capacitación
+              y soporte por proyecto
+            </li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <h3 class="job-title">Ingeniero De Soporte Técnico</h3>
+          <p class="company">BIOSIMTEC S.A.S., Bogotá</p>
+          <p class="date">Abril 2012 – Mayo 2021</p>
+          <ul class="responsibilities">
+            <li>
+              Coordinación y ejecución de mantenimientos a equipos de Cómputo y
+              servidores
+            </li>
+            <li>Desarrollo e implementación de Política de Backup</li>
+            <li>Realización de tareas de Mantenimiento a Página web</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Habilidades Técnicas e Integraciones</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>Lenguajes & Frameworks</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">PHP</span>
+              <span class="skill-tag">Laravel</span>
+              <span class="skill-tag">Lumen</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">jQuery</span>
             </div>
+          </div>
 
-            <div class="experience-item">
-                <h3 class="job-title">Desarrollador Web</h3>
-                <p class="company">DISTRIBUCIONES AXA SAS, Bogotá</p>
-                <p class="date">Enero 2022 – Julio 2022</p>
-                <ul class="responsibilities">
-                    <li>Análisis de requerimientos y diseño de soluciones usando PHP (Laravel y Lumen)</li>
-                    <li>Diseño de bases de datos y documentación de código</li>
-                </ul>
+          <div class="skill-category">
+            <h3>Bases de Datos</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">MySQL</span>
+              <span class="skill-tag">MariaDB</span>
+              <span class="skill-tag">Diseño de BD</span>
+              <span class="skill-tag">Optimización</span>
             </div>
+          </div>
 
-            <div class="experience-item">
-                <h3 class="job-title">Analista de Operaciones</h3>
-                <p class="company">GRM COLOMBIA SAS, Bogotá</p>
-                <p class="date">Junio 2021 – Diciembre 2021</p>
-                <ul class="responsibilities">
-                    <li>Validación de índices electrónicos</li>
-                    <li>Generación de informes del área de gestión documental</li>
-                    <li>Apoyo en la actualización del SGD Visual Vault</li>
-                </ul>
+          <div class="skill-category">
+            <h3>APIs & Integraciones</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">REST API</span>
+              <span class="skill-tag">SOAP</span>
+              <span class="skill-tag">JSON</span>
+              <span class="skill-tag">XML</span>
+              <span class="skill-tag">Suite Script</span>
             </div>
+          </div>
 
-            <div class="experience-item">
-                <h3 class="job-title">Desarrollador PHP Freelance</h3>
-                <p class="company">CS PRODUCTIONS SAS, Bogotá</p>
-                <p class="date">Mayo 2013 – Junio 2021</p>
-                <ul class="responsibilities">
-                    <li>Diseño, desarrollo (Lenguaje PHP - Laravel), parametrización y levantamiento de requerimientos</li>
-                    <li>Documentación del desarrollo, realización de pruebas, capacitación y soporte por proyecto</li>
-                </ul>
+          <div class="skill-category">
+            <h3>Sistemas Empresariales (B2B)</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">APIs Bancarias</span>
+              <span class="skill-tag">NetSuite ERP</span>
+              <span class="skill-tag">VTEX</span>
+              <span class="skill-tag">TMS</span>
             </div>
+          </div>
 
-            <div class="experience-item">
-                <h3 class="job-title">Ingeniero De Soporte Técnico</h3>
-                <p class="company">BIOSIMTEC S.A.S., Bogotá</p>
-                <p class="date">Abril 2012 – Mayo 2021</p>
-                <ul class="responsibilities">
-                    <li>Coordinación y ejecución de mantenimientos a equipos de Cómputo y servidores</li>
-                    <li>Desarrollo e implementación de Política de Backup</li>
-                    <li>Realización de tareas de Mantenimiento a Página web</li>
-                </ul>
+          <div class="skill-category">
+            <h3>Desarrollo Adicional</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Microservicios</span>
+              <span class="skill-tag">Web Services SOAP</span>
+              <span class="skill-tag">Tiempo Real</span>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section class="section">
-            <h2 class="section-title">Habilidades Técnicas e Integraciones</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Lenguajes & Frameworks</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">PHP</span>
-                        <span class="skill-tag">Laravel</span>
-                        <span class="skill-tag">Lumen</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">HTML</span>
-                        <span class="skill-tag">CSS</span>
-                        <span class="skill-tag">jQuery</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Bases de Datos</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">MariaDB</span>
-                        <span class="skill-tag">Diseño de BD</span>
-                        <span class="skill-tag">Optimización</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>APIs & Integraciones</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">REST API</span>
-                        <span class="skill-tag">SOAP</span>
-                        <span class="skill-tag">JSON</span>
-                        <span class="skill-tag">XML</span>
-                        <span class="skill-tag">Suite Script</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Sistemas Empresariales (B2B)</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">APIs Bancarias</span>
-                        <span class="skill-tag">NetSuite ERP</span>
-                        <span class="skill-tag">VTEX</span>
-                        <span class="skill-tag">TMS</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Desarrollo Adicional</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Microservicios</span>
-                        <span class="skill-tag">Web Services SOAP</span>
-                        <span class="skill-tag">Tiempo Real</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
+      <!--<section class="section">
             <h2 class="section-title">Repositorios de Ejemplo</h2>
             <div class="repos-grid">
                 <a href="https://github.com/tu-usuario/proyecto-laravel" target="_blank" class="repo-card">
@@ -568,33 +612,35 @@
                     </div>
                 </a>
             </div>
-        </section>
+        </section>-->
 
-        <section class="section">
-            <h2 class="section-title">Educación y Formación</h2>
-            
-            <div class="education-item">
-                <h3 class="job-title">Especialización en Inteligencia Artificial</h3>
-                <p class="company">UNIVERSIDAD AUTÓNOMA DE MANIZALES</p>
-                <p class="date">En Curso</p>
-            </div>
+      <section class="section">
+        <h2 class="section-title">Educación y Formación</h2>
 
-            <div class="education-item">
-                <h3 class="job-title">Ingeniería de Sistemas con Énfasis en Telecomunicaciones</h3>
-                <p class="company">UNIVERSIDAD COOPERATIVA DE COLOMBIA</p>
-                <p class="date">Año de graduación: 2014</p>
-            </div>
+        <div class="education-item">
+          <h3 class="job-title">Especialización en Inteligencia Artificial</h3>
+          <p class="company">UNIVERSIDAD AUTÓNOMA DE MANIZALES</p>
+          <p class="date">En Curso</p>
+        </div>
 
-            <div class="education-item">
-                <h3 class="job-title">Introducción al Desarrollo Backend</h3>
-                <p class="company">PLATZI</p>
-                <p class="date">2023</p>
-            </div>
-        </section>
+        <div class="education-item">
+          <h3 class="job-title">
+            Ingeniería de Sistemas con Énfasis en Telecomunicaciones
+          </h3>
+          <p class="company">UNIVERSIDAD COOPERATIVA DE COLOMBIA</p>
+          <p class="date">Año de graduación: 2014</p>
+        </div>
+
+        <div class="education-item">
+          <h3 class="job-title">Introducción al Desarrollo Backend</h3>
+          <p class="company">PLATZI</p>
+          <p class="date">2023</p>
+        </div>
+      </section>
     </div>
 
     <footer class="footer">
-        <p>© 2026 José Luis Bustos Valencia. Todos los derechos reservados.</p>
+      <p>© 2026 José Luis Bustos Valencia. Todos los derechos reservados.</p>
     </footer>
-</body>
+  </body>
 </html>
