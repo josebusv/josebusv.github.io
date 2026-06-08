@@ -7,34 +7,85 @@
       José Luis Bustos Valencia - Desarrollador Full Stack & Coordinador de
       Desarrollo
     </title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+      :root {
+        --bg: #ffffff;
+        --surface: #f8fafc;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --primary: #6366f1;
+        --primary-hover: #4f46e5;
+        --border: #e2e8f0;
+        --card-bg: #ffffff;
+        --header-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      [data-theme="dark"] {
+        --bg: #020617;
+        --surface: #0f172a;
+        --text: #f8fafc;
+        --text-muted: #94a3b8;
+        --primary: #818cf8;
+        --primary-hover: #6366f1;
+        --border: #1e293b;
+        --card-bg: #0f172a;
+        --header-gradient: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+        --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+      }
+
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
-      :root {
-        --primary: #2563eb;
-        --primary-dark: #1e40af;
-        --secondary: #64748b;
-        --dark: #0f172a;
-        --light: #f8fafc;
-        --border: #e2e8f0;
-        --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background: var(--bg);
+        transition: background-color 0.3s ease;
       }
 
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
-        color: var(--dark);
-        background: var(--light);
+      h1, h2, h3 {
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      .theme-toggle {
+        position: fixed;
+        top: 1.5rem;
+        right: 1.5rem;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 0.75rem;
+        border-radius: 50%;
+        cursor: pointer;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.1);
+        background: rgba(255, 255, 255, 0.3);
       }
 
       .header {
-        background: var(--gradient);
+        background: var(--header-gradient);
         color: white;
-        padding: 4rem 2rem;
+        padding: 6rem 2rem;
         text-align: center;
         position: relative;
         overflow: hidden;
@@ -349,24 +400,34 @@
     </style>
   </head>
   <body>
+    <button class="theme-toggle" id="theme-toggle" title="Cambiar tema">
+      <i data-lucide="sun" class="sun-icon"></i>
+      <i data-lucide="moon" class="moon-icon" style="display: none;"></i>
+    </button>
+
     <header class="header">
       <div class="header-content">
-        <h1>José Luis Bustos Valencia</h1>
-        <p class="subtitle">
-          Coordinador de Desarrollo | Desarrollador Full Stack | Especialista en
-          Laravel
-        </p>
+        <div class="profile-header">
+           <!-- Placeholder for profile image -->
+           <div class="profile-image">
+             <i data-lucide="user" size="48"></i>
+           </div>
+           <h1>José Luis Bustos Valencia</h1>
+           <p class="subtitle">
+             Coordinador de Desarrollo | Desarrollador Full Stack | Especialista en Laravel
+           </p>
+        </div>
         <div class="contact-info">
           <div class="contact-item">
-            <span>📧</span>
+            <i data-lucide="mail" size="18"></i>
             <a href="mailto:josebusv@gmail.com">josebusv@gmail.com</a>
           </div>
           <div class="contact-item">
-            <span>📱</span>
+            <i data-lucide="phone" size="18"></i>
             <span>317-342-9713</span>
           </div>
           <div class="contact-item">
-            <span>💼</span>
+            <i data-lucide="linkedin" size="18"></i>
             <a
               href="https://www.linkedin.com/in/jose-luis-bustos-valencia/"
               target="_blank"
@@ -380,117 +441,289 @@
     <div class="container">
       <section class="section">
         <h2 class="section-title">Perfil Profesional</h2>
-        <p class="profile-text">
-          Profesional con más de 10 años de experiencia en desarrollo de
-          software y actualmente Coordinador del Área de Desarrollo. Experiencia
-          en la creación de aplicaciones web robustas utilizando Laravel, jQuery
-          y bases de datos SQL. Liderazgo y gestión de proyectos complejos,
-          desde la concepción hasta la implementación exitosa.
-        </p>
-        <br />
-        <p class="profile-text">
-          <strong>Orientación al Crecimiento y Producto:</strong> Liderazgo de
-          equipos y gestión eficiente de recursos y comunicación para entregas
-          de alta calidad. Mi perfil combina la capacidad de dirección técnica
-          con la visión estratégica de negocio.
-        </p>
-        <br />
-        <p class="profile-text">
-          <strong>Enfoque en IA y Conversacional:</strong> Cursando una
-          Especialización en Inteligencia Artificial, alineado con la innovación
-          y las mejores prácticas del sector.
-        </p>
+        <div class="profile-grid">
+          <p class="profile-text">
+            Profesional con más de 10 años de experiencia en desarrollo de
+            software y actualmente Coordinador del Área de Desarrollo. Experiencia
+            en la creación de aplicaciones web robustas utilizando Laravel, jQuery
+            y bases de datos SQL. Liderazgo y gestión de proyectos complejos,
+            desde la concepción hasta la implementación exitosa.
+          </p>
+          <p class="profile-text">
+            <strong>Orientación al Crecimiento y Producto:</strong> Liderazgo de
+            equipos y gestión eficiente de recursos y comunicación para entregas
+            de alta calidad. Mi perfil combina la capacidad de dirección técnica
+            con la visión estratégica de negocio.
+          </p>
+          <p class="profile-text">
+            <strong>Enfoque en IA y Conversacional:</strong> Cursando una
+            Especialización en Inteligencia Artificial, alineado con la innovación
+            y las mejores prácticas del sector.
+          </p>
+        </div>
       </section>
+
+      <style>
+        .profile-header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1.5rem;
+          margin-bottom: 2rem;
+        }
+
+        .profile-image {
+          width: 120px;
+          height: 120px;
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          backdrop-filter: blur(10px);
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          color: white;
+        }
+
+        .profile-grid {
+          display: grid;
+          gap: 1.5rem;
+        }
+
+        [data-theme="dark"] .section {
+          background: var(--surface);
+          border: 1px solid var(--border);
+        }
+
+        [data-theme="dark"] .skill-category,
+        [data-theme="dark"] .repo-card {
+          background: var(--bg);
+        }
+
+        [data-theme="dark"] .skill-tag,
+        [data-theme="dark"] .repo-tag {
+          background: var(--surface);
+          color: var(--text);
+          border-color: var(--border);
+        }
+      </style>
+
+      <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = themeToggle.querySelector('.sun-icon');
+        const moonIcon = themeToggle.querySelector('.moon-icon');
+        
+        // Check for saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateIcons(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+          const currentTheme = document.documentElement.getAttribute('data-theme');
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          
+          document.documentElement.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+          updateIcons(newTheme);
+        });
+
+        function updateIcons(theme) {
+          if (theme === 'dark') {
+            sunIcon.style.display = 'none';
+            moonIcon.style.display = 'block';
+          } else {
+            sunIcon.style.display = 'block';
+            moonIcon.style.display = 'none';
+          }
+        }
+      </script>
 
       <section class="section">
         <h2 class="section-title">Experiencia Laboral</h2>
+        <div class="timeline">
+          <div class="experience-item">
+            <div class="timeline-dot"></div>
+            <div class="experience-content">
+              <div class="job-header">
+                <i data-lucide="briefcase" class="job-icon"></i>
+                <div>
+                  <h3 class="job-title">Coordinador de Desarrollo</h3>
+                  <p class="company">DISTRIBUCIONES AXA SAS, Bogotá</p>
+                </div>
+              </div>
+              <p class="date">Agosto 2022 – Actual</p>
+              <ul class="responsibilities">
+                <li>
+                  Acompañamiento al área de proyectos en el levantamiento de
+                  iniciativas y requerimientos
+                </li>
+                <li>
+                  Coordinación y seguimiento a las labores de desarrollo del equipo
+                  a cargo
+                </li>
+                <li>Apoyo en el desarrollo de scripts en PHP Framework Laravel</li>
+                <li>
+                  Liderazgo de Integraciones Clave: Diseño de la integración con
+                  APIs bancarias para gestión de recaudo, integrándolo con el ERP
+                  NetSuite para la creación de pagos
+                </li>
+                <li>
+                  Participación en proyectos de integración con la plataforma VTEX y
+                  una plataforma TMS
+                </li>
+              </ul>
+            </div>
+          </div>
 
-        <div class="experience-item">
-          <h3 class="job-title">Coordinador de Desarrollo</h3>
-          <p class="company">DISTRIBUCIONES AXA SAS, Bogotá</p>
-          <p class="date">Agosto 2022 – Actual</p>
-          <ul class="responsibilities">
-            <li>
-              Acompañamiento al área de proyectos en el levantamiento de
-              iniciativas y requerimientos
-            </li>
-            <li>
-              Coordinación y seguimiento a las labores de desarrollo del equipo
-              a cargo
-            </li>
-            <li>Apoyo en el desarrollo de scripts en PHP Framework Laravel</li>
-            <li>
-              Liderazgo de Integraciones Clave: Diseño de la integración con
-              APIs bancarias para gestión de recaudo, integrándolo con el ERP
-              NetSuite para la creación de pagos
-            </li>
-            <li>
-              Participación en proyectos de integración con la plataforma VTEX y
-              una plataforma TMS
-            </li>
-          </ul>
-        </div>
+          <div class="experience-item">
+            <div class="timeline-dot"></div>
+            <div class="experience-content">
+              <div class="job-header">
+                <i data-lucide="code-2" class="job-icon"></i>
+                <div>
+                  <h3 class="job-title">Desarrollador Web</h3>
+                  <p class="company">DISTRIBUCIONES AXA SAS, Bogotá</p>
+                </div>
+              </div>
+              <p class="date">Enero 2022 – Julio 2022</p>
+              <ul class="responsibilities">
+                <li>
+                  Análisis de requerimientos y diseño de soluciones usando PHP
+                  (Laravel y Lumen)
+                </li>
+                <li>Diseño de bases de datos y documentación de código</li>
+              </ul>
+            </div>
+          </div>
 
-        <div class="experience-item">
-          <h3 class="job-title">Desarrollador Web</h3>
-          <p class="company">DISTRIBUCIONES AXA SAS, Bogotá</p>
-          <p class="date">Enero 2022 – Julio 2022</p>
-          <ul class="responsibilities">
-            <li>
-              Análisis de requerimientos y diseño de soluciones usando PHP
-              (Laravel y Lumen)
-            </li>
-            <li>Diseño de bases de datos y documentación de código</li>
-          </ul>
-        </div>
+          <div class="experience-item">
+            <div class="timeline-dot"></div>
+            <div class="experience-content">
+              <div class="job-header">
+                <i data-lucide="file-search" class="job-icon"></i>
+                <div>
+                  <h3 class="job-title">Analista de Operaciones</h3>
+                  <p class="company">GRM COLOMBIA SAS, Bogotá</p>
+                </div>
+              </div>
+              <p class="date">Junio 2021 – Diciembre 2021</p>
+              <ul class="responsibilities">
+                <li>Validación de índices electrónicos</li>
+                <li>Generación de informes del área de gestión documental</li>
+                <li>Apoyo en la actualización del SGD Visual Vault</li>
+              </ul>
+            </div>
+          </div>
 
-        <div class="experience-item">
-          <h3 class="job-title">Analista de Operaciones</h3>
-          <p class="company">GRM COLOMBIA SAS, Bogotá</p>
-          <p class="date">Junio 2021 – Diciembre 2021</p>
-          <ul class="responsibilities">
-            <li>Validación de índices electrónicos</li>
-            <li>Generación de informes del área de gestión documental</li>
-            <li>Apoyo en la actualización del SGD Visual Vault</li>
-          </ul>
-        </div>
+          <div class="experience-item">
+            <div class="timeline-dot"></div>
+            <div class="experience-content">
+              <div class="job-header">
+                <i data-lucide="terminal" class="job-icon"></i>
+                <div>
+                  <h3 class="job-title">Desarrollador PHP Freelance</h3>
+                  <p class="company">CS PRODUCTIONS SAS, Bogotá</p>
+                </div>
+              </div>
+              <p class="date">Mayo 2013 – Junio 2021</p>
+              <ul class="responsibilities">
+                <li>
+                  Diseño, desarrollo (Lenguaje PHP - Laravel), parametrización y
+                  levantamiento de requerimientos
+                </li>
+                <li>
+                  Documentación del desarrollo, realización de pruebas, capacitación
+                  y soporte por proyecto
+                </li>
+              </ul>
+            </div>
+          </div>
 
-        <div class="experience-item">
-          <h3 class="job-title">Desarrollador PHP Freelance</h3>
-          <p class="company">CS PRODUCTIONS SAS, Bogotá</p>
-          <p class="date">Mayo 2013 – Junio 2021</p>
-          <ul class="responsibilities">
-            <li>
-              Diseño, desarrollo (Lenguaje PHP - Laravel), parametrización y
-              levantamiento de requerimientos
-            </li>
-            <li>
-              Documentación del desarrollo, realización de pruebas, capacitación
-              y soporte por proyecto
-            </li>
-          </ul>
-        </div>
-
-        <div class="experience-item">
-          <h3 class="job-title">Ingeniero De Soporte Técnico</h3>
-          <p class="company">BIOSIMTEC S.A.S., Bogotá</p>
-          <p class="date">Abril 2012 – Mayo 2021</p>
-          <ul class="responsibilities">
-            <li>
-              Coordinación y ejecución de mantenimientos a equipos de Cómputo y
-              servidores
-            </li>
-            <li>Desarrollo e implementación de Política de Backup</li>
-            <li>Realización de tareas de Mantenimiento a Página web</li>
-          </ul>
+          <div class="experience-item">
+            <div class="timeline-dot"></div>
+            <div class="experience-content">
+              <div class="job-header">
+                <i data-lucide="settings" class="job-icon"></i>
+                <div>
+                  <h3 class="job-title">Ingeniero De Soporte Técnico</h3>
+                  <p class="company">BIOSIMTEC S.A.S., Bogotá</p>
+                </div>
+              </div>
+              <p class="date">Abril 2012 – Mayo 2021</p>
+              <ul class="responsibilities">
+                <li>
+                  Coordinación y ejecución de mantenimientos a equipos de Cómputo y
+                  servidores
+                </li>
+                <li>Desarrollo e implementación de Política de Backup</li>
+                <li>Realización de tareas de Mantenimiento a Página web</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
+
+      <style>
+        .timeline {
+          position: relative;
+          padding-left: 1rem;
+        }
+
+        .timeline::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 2px;
+          background: var(--border);
+        }
+
+        .timeline .experience-item {
+          border-left: none;
+          padding-left: 2rem;
+          margin-bottom: 3rem;
+        }
+
+        .timeline-dot {
+          position: absolute;
+          left: -5px;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: var(--primary);
+          border: 2px solid var(--bg);
+        }
+
+        .job-header {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 1rem;
+        }
+
+        .job-icon {
+          color: var(--primary);
+          background: var(--surface);
+          padding: 0.5rem;
+          border-radius: 8px;
+          width: 40px;
+          height: 40px;
+        }
+      </style>
 
       <section class="section">
         <h2 class="section-title">Habilidades Técnicas e Integraciones</h2>
         <div class="skills-grid">
           <div class="skill-category">
-            <h3>Lenguajes & Frameworks</h3>
+            <div class="category-header">
+              <i data-lucide="code" class="category-icon"></i>
+              <h3>Lenguajes & Frameworks</h3>
+            </div>
             <div class="skill-tags">
               <span class="skill-tag">PHP</span>
               <span class="skill-tag">Laravel</span>
@@ -504,7 +737,10 @@
           </div>
 
           <div class="skill-category">
-            <h3>Bases de Datos</h3>
+            <div class="category-header">
+              <i data-lucide="database" class="category-icon"></i>
+              <h3>Bases de Datos</h3>
+            </div>
             <div class="skill-tags">
               <span class="skill-tag">SQL</span>
               <span class="skill-tag">MySQL</span>
@@ -516,7 +752,10 @@
           </div>
 
           <div class="skill-category">
-            <h3>APIs & Integraciones</h3>
+            <div class="category-header">
+              <i data-lucide="layers" class="category-icon"></i>
+              <h3>APIs & Integraciones</h3>
+            </div>
             <div class="skill-tags">
               <span class="skill-tag">REST API</span>
               <span class="skill-tag">SOAP</span>
@@ -527,7 +766,10 @@
           </div>
 
           <div class="skill-category">
-            <h3>Sistemas Empresariales (B2B)</h3>
+            <div class="category-header">
+              <i data-lucide="building-2" class="category-icon"></i>
+              <h3>Sistemas Empresariales</h3>
+            </div>
             <div class="skill-tags">
               <span class="skill-tag">APIs Bancarias</span>
               <span class="skill-tag">NetSuite ERP</span>
@@ -537,7 +779,10 @@
           </div>
 
           <div class="skill-category">
-            <h3>Desarrollo Adicional</h3>
+            <div class="category-header">
+              <i data-lucide="cpu" class="category-icon"></i>
+              <h3>Desarrollo Adicional</h3>
+            </div>
             <div class="skill-tags">
               <span class="skill-tag">Microservicios</span>
               <span class="skill-tag">Web Services SOAP</span>
@@ -547,6 +792,26 @@
         </div>
       </section>
 
+      <style>
+        .category-header {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin-bottom: 1.25rem;
+        }
+
+        .category-icon {
+          color: var(--primary);
+          width: 20px;
+          height: 20px;
+        }
+
+        .skill-category h3 {
+          font-size: 1.1rem;
+          margin-bottom: 0 !important;
+        }
+      </style>
+
       <section class="section">
         <h2 class="section-title">Repositorios de Ejemplo</h2>
         <div class="repos-grid">
@@ -555,109 +820,137 @@
             target="_blank"
             class="repo-card"
           >
-            <div class="repo-icon">📦</div>
-            <h3>OSINT Enterprise – Digital Footprint Monitoring Platform</h3>
+            <div class="repo-header">
+              <i data-lucide="github" class="repo-icon"></i>
+              <h3>OSINT Enterprise</h3>
+            </div>
             <p>
-              OSINT Enterprise es una plataforma modular diseñada para auditar,
-              monitorear y analizar la huella digital de identidades públicas
-              utilizando técnicas OSINT (Open Source Intelligence). Este
-              proyecto nace como un laboratorio de ingeniería enfocado en la
-              construcción de capacidades proactivas de seguridad,
-              observabilidad y análisis de exposición digital, utilizando una
-              arquitectura desacoplada y preparada para evolucionar hacia
-              entornos productivos o SaaS.
+              Plataforma modular para auditoría y análisis de huella digital
+              utilizando técnicas OSINT. Arquitectura desacoplada enfocada en
+              seguridad y observabilidad proactiva.
             </p>
-            <div class="repo-tags">
-              <span class="repo-tag">Python 3.10+</span>
-              <span class="repo-tag">SQLite</span>
-              <span class="repo-tag">YAML</span>
+            <div class="repo-footer">
+              <div class="repo-tags">
+                <span class="repo-tag">Python</span>
+                <span class="repo-tag">SQLite</span>
+                <span class="repo-tag">OSINT</span>
+              </div>
+              <i data-lucide="external-link" size="16"></i>
             </div>
           </a>
-
-          <!--<a href="https://github.com/tu-usuario/api-rest" target="_blank" class="repo-card">
-                    <div class="repo-icon">🔌</div>
-                    <h3>API RESTful</h3>
-                    <p>API robusta con JWT, documentación Swagger y microservicios</p>
-                    <div class="repo-tags">
-                        <span class="repo-tag">PHP</span>
-                        <span class="repo-tag">Lumen</span>
-                        <span class="repo-tag">JWT</span>
-                    </div>
-                </a>
-
-                <a href="https://github.com/tu-usuario/integracion-bancaria" target="_blank" class="repo-card">
-                    <div class="repo-icon">🏦</div>
-                    <h3>Integración Bancaria</h3>
-                    <p>Sistema de gestión de pagos con integración a APIs bancarias</p>
-                    <div class="repo-tags">
-                        <span class="repo-tag">Laravel</span>
-                        <span class="repo-tag">API REST</span>
-                        <span class="repo-tag">Webhooks</span>
-                    </div>
-                </a>
-
-                <a href="https://github.com/tu-usuario/dashboard-analytics" target="_blank" class="repo-card">
-                    <div class="repo-icon">📊</div>
-                    <h3>Dashboard Analytics</h3>
-                    <p>Panel de control con gráficos en tiempo real y reportes</p>
-                    <div class="repo-tags">
-                        <span class="repo-tag">JavaScript</span>
-                        <span class="repo-tag">jQuery</span>
-                        <span class="repo-tag">Chart.js</span>
-                    </div>
-                </a>
-
-                <a href="https://github.com/tu-usuario/ecommerce-integration" target="_blank" class="repo-card">
-                    <div class="repo-icon">🛒</div>
-                    <h3>Integración E-commerce</h3>
-                    <p>Conectores para VTEX y sistemas de gestión empresarial</p>
-                    <div class="repo-tags">
-                        <span class="repo-tag">PHP</span>
-                        <span class="repo-tag">VTEX</span>
-                        <span class="repo-tag">NetSuite</span>
-                    </div>
-                </a>
-
-                <a href="https://github.com/tu-usuario/microservices-project" target="_blank" class="repo-card">
-                    <div class="repo-icon">⚙️</div>
-                    <h3>Arquitectura Microservicios</h3>
-                    <p>Implementación de microservicios con Lumen y mensajería</p>
-                    <div class="repo-tags">
-                        <span class="repo-tag">Lumen</span>
-                        <span class="repo-tag">Docker</span>
-                        <span class="repo-tag">Redis</span>
-                    </div>
-                </a>-->
         </div>
       </section>
+
+      <style>
+        .repo-header {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin-bottom: 1rem;
+        }
+
+        .repo-icon {
+          width: 24px;
+          height: 24px;
+          color: var(--primary);
+        }
+
+        .repo-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 1.5rem;
+        }
+
+        .repo-card p {
+          font-size: 0.95rem;
+          color: var(--text-muted);
+        }
+      </style>
 
       <section class="section">
         <h2 class="section-title">Educación y Formación</h2>
+        <div class="education-grid">
+          <div class="education-item">
+            <div class="education-header">
+              <i data-lucide="graduation-cap" class="edu-icon"></i>
+              <div>
+                <h3 class="job-title">Especialización en Inteligencia Artificial</h3>
+                <p class="company">UNIVERSIDAD AUTÓNOMA DE MANIZALES</p>
+              </div>
+            </div>
+            <p class="date">En Curso</p>
+          </div>
 
-        <div class="education-item">
-          <h3 class="job-title">Especialización en Inteligencia Artificial</h3>
-          <p class="company">UNIVERSIDAD AUTÓNOMA DE MANIZALES</p>
-          <p class="date">En Curso</p>
-        </div>
+          <div class="education-item">
+            <div class="education-header">
+              <i data-lucide="graduation-cap" class="edu-icon"></i>
+              <div>
+                <h3 class="job-title">Ingeniería de Sistemas</h3>
+                <p class="company">UNIVERSIDAD COOPERATIVA DE COLOMBIA</p>
+              </div>
+            </div>
+            <p class="date">Año de graduación: 2014</p>
+          </div>
 
-        <div class="education-item">
-          <h3 class="job-title">
-            Ingeniería de Sistemas con Énfasis en Telecomunicaciones
-          </h3>
-          <p class="company">UNIVERSIDAD COOPERATIVA DE COLOMBIA</p>
-          <p class="date">Año de graduación: 2014</p>
-        </div>
-
-        <div class="education-item">
-          <h3 class="job-title">Introducción al Desarrollo Backend</h3>
-          <p class="company">PLATZI</p>
-          <p class="date">2023</p>
+          <div class="education-item">
+            <div class="education-header">
+              <i data-lucide="award" class="edu-icon"></i>
+              <div>
+                <h3 class="job-title">Introducción al Desarrollo Backend</h3>
+                <p class="company">PLATZI</p>
+              </div>
+            </div>
+            <p class="date">2023</p>
+          </div>
         </div>
       </section>
+
+      <style>
+        .education-header {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .edu-icon {
+          color: var(--primary);
+          background: var(--surface);
+          padding: 0.5rem;
+          border-radius: 8px;
+          width: 36px;
+          height: 36px;
+        }
+
+        .education-item {
+          border-left: none !important;
+          padding-left: 0 !important;
+          margin-bottom: 2rem;
+        }
+      </style>
     </div>
 
     <footer class="footer">
-      <p>© 2026 José Luis Bustos Valencia. Todos los derechos reservados.</p>
+      <div class="footer-content">
+        <p>© 2026 José Luis Bustos Valencia</p>
+        <p class="footer-tagline">Dev Lead | Full Stack Specialist</p>
+      </div>
     </footer>
+
+    <style>
+      .footer {
+        background: var(--surface);
+        color: var(--text);
+        border-top: 1px solid var(--border);
+        padding: 4rem 2rem;
+      }
+
+      .footer-tagline {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+    </style>
   </body>
 </html>
