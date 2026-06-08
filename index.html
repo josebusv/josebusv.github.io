@@ -408,9 +408,8 @@
     <header class="header">
       <div class="header-content">
         <div class="profile-header">
-           <!-- Placeholder for profile image -->
            <div class="profile-image">
-             <i data-lucide="user" size="48"></i>
+             <img src="jose-luis-bustos-valencia-dev-lead.jpg" alt="José Luis Bustos Valencia - Dev Lead">
            </div>
            <h1>José Luis Bustos Valencia</h1>
            <p class="subtitle">
@@ -474,6 +473,13 @@
           backdrop-filter: blur(10px);
           border: 2px solid rgba(255, 255, 255, 0.3);
           color: white;
+          overflow: hidden; /* Asegura que la imagen no se salga del circulo */
+        }
+
+        .profile-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
 
         .profile-grid {
