@@ -1,953 +1,903 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>José Luis Bustos Valencia | Development Lead & Senior Full Stack Engineer</title>
-    <meta name="description" content="Estratega tecnológico y Líder de Desarrollo con 10+ años de experiencia. Experto en Laravel, integraciones ERP NetSuite, APIs Bancarias y soluciones de IA.">
-    <meta name="keywords" content="Development Lead, Senior Full Stack Engineer, Laravel Specialist, NetSuite Integration, Software Coordinator, Arquitecto de Software, PHP, Python AI">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
-    <!-- Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-      :root {
-        --bg: #ffffff;
-        --surface: #f8fafc;
-        --text: #0f172a;
-        --text-muted: #475569;
-        --primary: #4338ca; /* Indigo 700 - Más sólido */
-        --primary-hover: #3730a3; /* Indigo 800 */
-        --border: #e2e8f0;
-        --card-bg: #ffffff;
-        --header-gradient: linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%); /* De Deep Navy a Indigo */
-        --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      [data-theme="dark"] {
-        --bg: #020617; /* Slate 950 */
-        --surface: #0f172a; /* Slate 900 */
-        --text: #f1f5f9;
-        --text-muted: #94a3b8;
-        --primary: #818cf8;
-        --primary-hover: #6366f1;
-        --border: #1e293b;
-        --card-bg: #0f172a;
-        --header-gradient: linear-gradient(135deg, #020617 0%, #1e1b4b 100%);
-        --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.5);
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: 'Inter', sans-serif;
-        line-height: 1.6;
-        color: var(--text);
-        background: var(--bg);
-        transition: background-color 0.3s ease;
-      }
-
-      h1, h2, h3 {
-        font-family: 'Montserrat', sans-serif;
-      }
-
-      .theme-toggle {
-        position: fixed;
-        top: 1.5rem;
-        right: 1.5rem;
-        z-index: 100;
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        padding: 0.75rem;
-        border-radius: 50%;
-        cursor: pointer;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: var(--transition);
-      }
-
-      .theme-toggle:hover {
-        transform: scale(1.1);
-        background: rgba(255, 255, 255, 0.3);
-      }
-
-      .header {
-        background: var(--header-gradient);
-        color: white;
-        padding: 6rem 2rem;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .header::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-        opacity: 0.3;
-      }
-
-      .header-content {
-        position: relative;
-        z-index: 1;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      h1 {
-        font-size: 3rem;
-        margin-bottom: 0.5rem;
-        font-weight: 700;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-      }
-
-      .subtitle {
-        font-size: 1.3rem;
-        opacity: 0.95;
-        margin-bottom: 2rem;
-      }
-
-      .contact-info {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        flex-wrap: wrap;
-        margin-top: 1.5rem;
-      }
-
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: rgba(255, 255, 255, 0.2);
-        padding: 0.5rem 1rem;
-        border-radius: 25px;
-        backdrop-filter: blur(10px);
-        transition: transform 0.3s ease;
-      }
-
-      .contact-item:hover {
-        transform: translateY(-3px);
-        background: rgba(255, 255, 255, 0.3);
-      }
-
-      .contact-item a {
-        color: white;
-        text-decoration: none;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem;
-      }
-
-      .section {
-        background: white;
-        margin: 2rem 0;
-        padding: 2.5rem;
-        border-radius: 15px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
-      }
-
-      .section:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .section-title {
-        font-size: 2rem;
-        color: var(--primary);
-        margin-bottom: 1.5rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 3px solid var(--primary);
-        display: inline-block;
-      }
-
-      .profile-text {
-        font-size: 1.1rem;
-        color: var(--secondary);
-        line-height: 1.8;
-        text-align: justify;
-      }
-
-      .experience-item,
-      .education-item {
-        margin-bottom: 2rem;
-        padding-left: 1.5rem;
-        border-left: 3px solid var(--primary);
-        position: relative;
-      }
-
-      .experience-item::before {
-        content: "";
-        position: absolute;
-        left: -8px;
-        top: 0;
-        width: 13px;
-        height: 13px;
-        background: var(--primary);
-        border-radius: 50%;
-        border: 3px solid white;
-      }
-
-      .job-title {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: var(--dark);
-        margin-bottom: 0.3rem;
-      }
-
-      .company {
-        font-size: 1.1rem;
-        color: var(--primary);
-        font-weight: 600;
-        margin-bottom: 0.3rem;
-      }
-
-      .date {
-        font-size: 0.95rem;
-        color: var(--secondary);
-        font-style: italic;
-        margin-bottom: 1rem;
-      }
-
-      .responsibilities {
-        list-style: none;
-        padding-left: 0;
-      }
-
-      .responsibilities li {
-        padding: 0.5rem 0;
-        padding-left: 1.5rem;
-        position: relative;
-        color: var(--secondary);
-      }
-
-      .responsibilities li::before {
-        content: "▹";
-        position: absolute;
-        left: 0;
-        color: var(--primary);
-        font-weight: bold;
-      }
-
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.5rem;
-      }
-
-      .skill-category {
-        background: var(--light);
-        padding: 1.5rem;
-        border-radius: 10px;
-        border: 2px solid var(--border);
-        transition: border-color 0.3s ease;
-      }
-
-      .skill-category:hover {
-        border-color: var(--primary);
-      }
-
-      .skill-category h3 {
-        color: var(--primary);
-        margin-bottom: 1rem;
-        font-size: 1.2rem;
-      }
-
-      .skill-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .skill-tag {
-        background: white;
-        color: var(--dark);
-        padding: 0.4rem 0.8rem;
-        border-radius: 20px;
-        font-size: 0.9rem;
-        border: 1px solid var(--border);
-        transition: all 0.3s ease;
-      }
-
-      .skill-tag:hover {
-        background: var(--primary);
-        color: white;
-        transform: scale(1.05);
-      }
-
-      .repos-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 1.5rem;
-        margin-top: 1rem;
-      }
-
-      .repo-card {
-        background: var(--light);
-        padding: 2rem;
-        border-radius: 12px;
-        border: 2px solid var(--border);
-        text-decoration: none;
-        color: inherit;
-        transition: all 0.3s ease;
-        display: block;
-      }
-
-      .repo-card:hover {
-        border-color: var(--primary);
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
-      }
-
-      .repo-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-
-      .repo-card h3 {
-        color: var(--dark);
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .repo-card p {
-        color: var(--secondary);
-        margin-bottom: 1rem;
-        line-height: 1.6;
-      }
-
-      .repo-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .repo-tag {
-        background: white;
-        color: var(--primary);
-        padding: 0.3rem 0.7rem;
-        border-radius: 15px;
-        font-size: 0.85rem;
-        border: 1px solid var(--primary);
-        font-weight: 500;
-      }
-
-      .footer {
-        text-align: center;
-        padding: 2rem;
-        background: var(--dark);
-        color: white;
-        margin-top: 3rem;
-      }
-
-      @media (max-width: 768px) {
-        h1 {
-          font-size: 2rem;
-        }
-
-        .subtitle {
-          font-size: 1rem;
-        }
-
-        .contact-info {
-          gap: 1rem;
-        }
-
-        .section {
-          padding: 1.5rem;
-        }
-
-        .skills-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .section {
-        animation: fadeIn 0.6s ease-out;
-      }
-    </style>
-  </head>
-  <body>
-    <button class="theme-toggle" id="theme-toggle" title="Cambiar tema">
-      <i data-lucide="sun" class="sun-icon"></i>
-      <i data-lucide="moon" class="moon-icon" style="display: none;"></i>
-    </button>
-
-    <header class="header">
-      <div class="header-content">
-        <div class="profile-header">
-           <div class="profile-image">
-             <img src="jose-luis-bustos-valencia-dev-lead.jpg" alt="José Luis Bustos Valencia - Dev Lead">
-           </div>
-           <h1>José Luis Bustos Valencia</h1>
-           <p class="subtitle">
-             Development Lead | Senior Full Stack Engineer | Laravel & Cloud Integrations Specialist
-           </p>
-        </div>
-        <div class="contact-info">
-          <div class="contact-item">
-            <i data-lucide="mail" size="18"></i>
-            <a href="mailto:josebusv@gmail.com">josebusv@gmail.com</a>
-          </div>
-          <div class="contact-item">
-            <i data-lucide="phone" size="18"></i>
-            <span>317-342-9713</span>
-          </div>
-          <div class="contact-item">
-            <i data-lucide="linkedin" size="18"></i>
-            <a
-              href="https://www.linkedin.com/in/jose-luis-bustos-valencia/"
-              target="_blank"
-              >LinkedIn</a
-            >
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <div class="container">
-      <section class="section">
-        <h2 class="section-title">Perfil Profesional</h2>
-        <div class="profile-grid">
-          <p class="profile-text">
-            Estratega tecnológico con más de 10 años transformando requerimientos complejos en arquitecturas de software escalables. Como <strong>Coordinador de Desarrollo</strong>, mi enfoque une la excelencia técnica en el ecosistema <strong>PHP/Laravel</strong> con una visión estratégica de producto.
-          </p>
-          <p class="profile-text">
-            <strong>Liderazgo y Valor de Negocio:</strong> Especialista en integraciones críticas (ERP NetSuite, APIs Bancarias, VTEX) y optimización de procesos B2B. Lidero la transformación digital mediante la estandarización de flujos y la gestión eficiente de equipos técnicos.
-          </p>
-          <p class="profile-text">
-            <strong>Innovación y Futuro:</strong> Cursando una Especialización en Inteligencia Artificial para potenciar soluciones de software mediante <strong>IA y modelos conversacionales</strong>, impulsando la eficiencia operativa del sector.
-          </p>
-        </div>
-      </section>
-
-      <style>
-        .profile-header {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 1.5rem;
-          margin-bottom: 2rem;
-        }
-
-        .profile-image {
-          width: 120px;
-          height: 120px;
-          background: rgba(255, 255, 255, 0.2);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          backdrop-filter: blur(10px);
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          color: white;
-          overflow: hidden; /* Asegura que la imagen no se salga del circulo */
-        }
-
-        .profile-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .profile-grid {
-          display: grid;
-          gap: 1.5rem;
-        }
-
-        [data-theme="dark"] .section {
-          background: var(--surface);
-          border: 1px solid var(--border);
-        }
-
-        [data-theme="dark"] .skill-category,
-        [data-theme="dark"] .repo-card {
-          background: var(--bg);
-        }
-
-        [data-theme="dark"] .skill-tag,
-        [data-theme="dark"] .repo-tag {
-          background: var(--surface);
-          color: var(--text);
-          border-color: var(--border);
-        }
-      </style>
-
-      <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-
-        // Theme Toggle Logic
-        const themeToggle = document.getElementById('theme-toggle');
-        const sunIcon = themeToggle.querySelector('.sun-icon');
-        const moonIcon = themeToggle.querySelector('.moon-icon');
-        
-        // Check for saved theme
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        updateIcons(savedTheme);
-
-        themeToggle.addEventListener('click', () => {
-          const currentTheme = document.documentElement.getAttribute('data-theme');
-          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-          
-          document.documentElement.setAttribute('data-theme', newTheme);
-          localStorage.setItem('theme', newTheme);
-          updateIcons(newTheme);
-        });
-
-        function updateIcons(theme) {
-          if (theme === 'dark') {
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
-          } else {
-            sunIcon.style.display = 'block';
-            moonIcon.style.display = 'none';
-          }
-        }
-      </script>
-
-      <section class="section">
-        <h2 class="section-title">Experiencia Laboral</h2>
-        <div class="timeline">
-          <div class="experience-item">
-            <div class="timeline-dot"></div>
-            <div class="experience-content">
-              <div class="job-header">
-                <i data-lucide="briefcase" class="job-icon"></i>
-                <div>
-                  <h3 class="job-title">Coordinador de Desarrollo</h3>
-                  <p class="company">DISTRIBUCIONES AXA SAS, Bogotá</p>
-                </div>
-              </div>
-              <p class="date">Agosto 2022 – Actual</p>
-              <ul class="responsibilities">
-                <li>
-                  Acompañamiento al área de proyectos en el levantamiento de
-                  iniciativas y requerimientos
-                </li>
-                <li>
-                  Coordinación y seguimiento a las labores de desarrollo del equipo
-                  a cargo
-                </li>
-                <li>Apoyo en el desarrollo de scripts en PHP Framework Laravel</li>
-                <li>
-                  Liderazgo de Integraciones Clave: Diseño de la integración con
-                  APIs bancarias para gestión de recaudo, integrándolo con el ERP
-                  NetSuite para la creación de pagos
-                </li>
-                <li>
-                  Participación en proyectos de integración con la plataforma VTEX y
-                  una plataforma TMS
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="experience-item">
-            <div class="timeline-dot"></div>
-            <div class="experience-content">
-              <div class="job-header">
-                <i data-lucide="code-2" class="job-icon"></i>
-                <div>
-                  <h3 class="job-title">Desarrollador Web</h3>
-                  <p class="company">DISTRIBUCIONES AXA SAS, Bogotá</p>
-                </div>
-              </div>
-              <p class="date">Enero 2022 – Julio 2022</p>
-              <ul class="responsibilities">
-                <li>
-                  Análisis de requerimientos y diseño de soluciones usando PHP
-                  (Laravel y Lumen)
-                </li>
-                <li>Diseño de bases de datos y documentación de código</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="experience-item">
-            <div class="timeline-dot"></div>
-            <div class="experience-content">
-              <div class="job-header">
-                <i data-lucide="file-search" class="job-icon"></i>
-                <div>
-                  <h3 class="job-title">Analista de Operaciones</h3>
-                  <p class="company">GRM COLOMBIA SAS, Bogotá</p>
-                </div>
-              </div>
-              <p class="date">Junio 2021 – Diciembre 2021</p>
-              <ul class="responsibilities">
-                <li>Validación de índices electrónicos</li>
-                <li>Generación de informes del área de gestión documental</li>
-                <li>Apoyo en la actualización del SGD Visual Vault</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="experience-item">
-            <div class="timeline-dot"></div>
-            <div class="experience-content">
-              <div class="job-header">
-                <i data-lucide="terminal" class="job-icon"></i>
-                <div>
-                  <h3 class="job-title">Desarrollador PHP Freelance</h3>
-                  <p class="company">CS PRODUCTIONS SAS, Bogotá</p>
-                </div>
-              </div>
-              <p class="date">Mayo 2013 – Junio 2021</p>
-              <ul class="responsibilities">
-                <li>
-                  Diseño, desarrollo (Lenguaje PHP - Laravel), parametrización y
-                  levantamiento de requerimientos
-                </li>
-                <li>
-                  Documentación del desarrollo, realización de pruebas, capacitación
-                  y soporte por proyecto
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="experience-item">
-            <div class="timeline-dot"></div>
-            <div class="experience-content">
-              <div class="job-header">
-                <i data-lucide="settings" class="job-icon"></i>
-                <div>
-                  <h3 class="job-title">Ingeniero De Soporte Técnico</h3>
-                  <p class="company">BIOSIMTEC S.A.S., Bogotá</p>
-                </div>
-              </div>
-              <p class="date">Abril 2012 – Mayo 2021</p>
-              <ul class="responsibilities">
-                <li>
-                  Coordinación y ejecución de mantenimientos a equipos de Cómputo y
-                  servidores
-                </li>
-                <li>Desarrollo e implementación de Política de Backup</li>
-                <li>Realización de tareas de Mantenimiento a Página web</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <style>
-        .timeline {
-          position: relative;
-          padding-left: 1rem;
-        }
-
-        .timeline::before {
-          content: "";
-          position: absolute;
-          left: 0;
-          top: 0;
-          bottom: 0;
-          width: 2px;
-          background: var(--border);
-        }
-
-        .timeline .experience-item {
-          border-left: none;
-          padding-left: 2rem;
-          margin-bottom: 3rem;
-        }
-
-        .timeline-dot {
-          position: absolute;
-          left: -5px;
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          background: var(--primary);
-          border: 2px solid var(--bg);
-        }
-
-        .job-header {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          margin-bottom: 1rem;
-        }
-
-        .job-icon {
-          color: var(--primary);
-          background: var(--surface);
-          padding: 0.5rem;
-          border-radius: 8px;
-          width: 40px;
-          height: 40px;
-        }
-      </style>
-
-      <section class="section">
-        <h2 class="section-title">Habilidades Técnicas e Integraciones</h2>
-        <div class="skills-grid">
-          <div class="skill-category">
-            <div class="category-header">
-              <i data-lucide="code" class="category-icon"></i>
-              <h3>Lenguajes & Frameworks</h3>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-tag">PHP</span>
-              <span class="skill-tag">Laravel</span>
-              <span class="skill-tag">Lumen</span>
-              <span class="skill-tag">JavaScript</span>
-              <span class="skill-tag">HTML</span>
-              <span class="skill-tag">CSS</span>
-              <span class="skill-tag">jQuery</span>
-              <span class="skill-tag">Python</span>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <div class="category-header">
-              <i data-lucide="database" class="category-icon"></i>
-              <h3>Bases de Datos</h3>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-tag">SQL</span>
-              <span class="skill-tag">MySQL</span>
-              <span class="skill-tag">SQLite</span>
-              <span class="skill-tag">MariaDB</span>
-              <span class="skill-tag">Diseño de BD</span>
-              <span class="skill-tag">Optimización</span>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <div class="category-header">
-              <i data-lucide="layers" class="category-icon"></i>
-              <h3>APIs & Integraciones</h3>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-tag">REST API</span>
-              <span class="skill-tag">SOAP</span>
-              <span class="skill-tag">JSON</span>
-              <span class="skill-tag">XML</span>
-              <span class="skill-tag">Suite Script</span>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <div class="category-header">
-              <i data-lucide="building-2" class="category-icon"></i>
-              <h3>Sistemas Empresariales</h3>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-tag">APIs Bancarias</span>
-              <span class="skill-tag">NetSuite ERP</span>
-              <span class="skill-tag">VTEX</span>
-              <span class="skill-tag">TMS</span>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <div class="category-header">
-              <i data-lucide="cpu" class="category-icon"></i>
-              <h3>Desarrollo Adicional</h3>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-tag">Microservicios</span>
-              <span class="skill-tag">Web Services SOAP</span>
-              <span class="skill-tag">Tiempo Real</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <style>
-        .category-header {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-          margin-bottom: 1.25rem;
-        }
-
-        .category-icon {
-          color: var(--primary);
-          width: 20px;
-          height: 20px;
-        }
-
-        .skill-category h3 {
-          font-size: 1.1rem;
-          margin-bottom: 0 !important;
-        }
-      </style>
-
-      <section class="section">
-        <h2 class="section-title">Repositorios de Ejemplo</h2>
-        <div class="repos-grid">
-          <a
-            href="https://github.com/josebusv/osint-enterprise.git"
-            target="_blank"
-            class="repo-card"
-          >
-            <div class="repo-header">
-              <i data-lucide="github" class="repo-icon"></i>
-              <h3>OSINT Enterprise</h3>
-            </div>
-            <p>
-              Plataforma modular para auditoría y análisis de huella digital
-              utilizando técnicas OSINT. Arquitectura desacoplada enfocada en
-              seguridad y observabilidad proactiva.
-            </p>
-            <div class="repo-footer">
-              <div class="repo-tags">
-                <span class="repo-tag">Python</span>
-                <span class="repo-tag">SQLite</span>
-                <span class="repo-tag">OSINT</span>
-              </div>
-              <i data-lucide="external-link" size="16"></i>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <style>
-        .repo-header {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-          margin-bottom: 1rem;
-        }
-
-        .repo-icon {
-          width: 24px;
-          height: 24px;
-          color: var(--primary);
-        }
-
-        .repo-footer {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-top: 1.5rem;
-        }
-
-        .repo-card p {
-          font-size: 0.95rem;
-          color: var(--text-muted);
-        }
-      </style>
-
-      <section class="section">
-        <h2 class="section-title">Educación y Formación</h2>
-        <div class="education-grid">
-          <div class="education-item">
-            <div class="education-header">
-              <i data-lucide="graduation-cap" class="edu-icon"></i>
-              <div>
-                <h3 class="job-title">Especialización en Inteligencia Artificial</h3>
-                <p class="company">UNIVERSIDAD AUTÓNOMA DE MANIZALES</p>
-              </div>
-            </div>
-            <p class="date">En Curso</p>
-          </div>
-
-          <div class="education-item">
-            <div class="education-header">
-              <i data-lucide="graduation-cap" class="edu-icon"></i>
-              <div>
-                <h3 class="job-title">Ingeniería de Sistemas</h3>
-                <p class="company">UNIVERSIDAD COOPERATIVA DE COLOMBIA</p>
-              </div>
-            </div>
-            <p class="date">Año de graduación: 2014</p>
-          </div>
-
-          <div class="education-item">
-            <div class="education-header">
-              <i data-lucide="award" class="edu-icon"></i>
-              <div>
-                <h3 class="job-title">Introducción al Desarrollo Backend</h3>
-                <p class="company">PLATZI</p>
-              </div>
-            </div>
-            <p class="date">2023</p>
-          </div>
-        </div>
-      </section>
-
-      <style>
-        .education-header {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          margin-bottom: 0.5rem;
-        }
-
-        .edu-icon {
-          color: var(--primary);
-          background: var(--surface);
-          padding: 0.5rem;
-          border-radius: 8px;
-          width: 36px;
-          height: 36px;
-        }
-
-        .education-item {
-          border-left: none !important;
-          padding-left: 0 !important;
-          margin-bottom: 2rem;
-        }
-      </style>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags -->
+  <title>José Luis Bustos Valencia | Development Lead & AI Engineer | Laravel · Python · Cloud</title>
+  <meta name="description" content="Estratega tecnológico con 10+ años. Especialista en integraciones ERP, APIs bancarias y soluciones de IA. Disponible para proyectos empresariales en Colombia y remoto." />
+  <meta name="keywords" content="Development Lead Colombia, Laravel Expert, AI Engineer Colombia, NetSuite Integration Developer, Full Stack PHP Python, Software Architect, Automatización IA empresarial, Integración ERP bancaria, Bogotá" />
+  <meta name="author" content="José Luis Bustos Valencia" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://josebusv.github.io/" />
+
+  <!-- Open Graph (LinkedIn / Social) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://josebusv.github.io/" />
+  <meta property="og:title" content="José Luis Bustos Valencia | Development Lead & AI Engineer" />
+  <meta property="og:description" content="Estratega tecnológico con 10+ años. Integraciones ERP, APIs bancarias y soluciones de IA." />
+  <meta property="og:image" content="https://josebusv.github.io/jose-luis-bustos-valencia-dev-lead.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="José Luis Bustos Valencia | Dev Lead & AI Engineer" />
+  <meta name="twitter:description" content="10+ años transformando requerimientos complejos en arquitecturas escalables. Laravel · Python · IA · Cloud." />
+  <meta name="twitter:image" content="https://josebusv.github.io/jose-luis-bustos-valencia-dev-lead.jpg" />
+
+  <!-- Schema.org Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "José Luis Bustos Valencia",
+    "jobTitle": "Development Lead & AI Engineer",
+    "url": "https://josebusv.github.io/",
+    "email": "josebusv@gmail.com",
+    "telephone": "+57-317-342-9713",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bogotá",
+      "addressCountry": "CO"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/jose-luis-bustos-valencia/",
+      "https://github.com/josebusv"
+    ],
+    "knowsAbout": ["Laravel", "PHP", "Python", "AI", "Machine Learning", "NetSuite", "Software Architecture", "DevOps", "Cloud Computing", "ERP Integration", "Banking APIs"]
+  }
+  </script>
+
+  <style>
+    /* ─── Design Tokens ─── */
+    :root {
+      --bg-900: #0a0e1a;
+      --bg-800: #0f1629;
+      --bg-700: #141e36;
+      --bg-card: #111827;
+      --border: rgba(99, 179, 237, 0.12);
+      --accent: #63b3ed;
+      --accent-2: #7c3aed;
+      --accent-3: #10b981;
+      --text-primary: #f0f4ff;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --gradient: linear-gradient(135deg, #63b3ed 0%, #7c3aed 100%);
+      --gradient-2: linear-gradient(135deg, #7c3aed 0%, #10b981 100%);
+      --radius: 12px;
+      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --font-mono: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    }
+
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg-900);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent); text-decoration: none; transition: opacity .2s; }
+    a:hover { opacity: .8; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── Layout ─── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 5rem 0; }
+
+    /* ─── Nav ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10, 14, 26, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: .9rem 0;
+    }
+    nav .inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1100px; margin: 0 auto; padding: 0 1.5rem;
+    }
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: .95rem;
+      font-weight: 600;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text-secondary); font-size: .9rem; letter-spacing: .02em; }
+    .nav-links a:hover { color: var(--accent); opacity: 1; }
+    .nav-cta {
+      padding: .45rem 1.2rem;
+      background: var(--gradient);
+      border-radius: 6px;
+      color: white !important;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+
+    /* ─── Hero ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 5rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .3rem .85rem;
+      background: rgba(99, 179, 237, 0.1);
+      border: 1px solid rgba(99, 179, 237, 0.25);
+      border-radius: 99px;
+      font-size: .8rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-family: var(--font-mono);
+    }
+    .hero-badge::before { content: '▶'; font-size: .6rem; }
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: 1.2rem;
+    }
+    h1 .accent { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin-bottom: 2rem;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .btn-primary {
+      padding: .75rem 1.8rem;
+      background: var(--gradient);
+      border-radius: 8px;
+      color: white;
+      font-weight: 700;
+      font-size: .95rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(99,179,237,.3); opacity: 1; }
+    .btn-secondary {
+      padding: .75rem 1.8rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: .95rem;
+      background: transparent;
+      transition: border-color .2s, transform .2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); transform: translateY(-2px); opacity: 1; }
+    .hero-stats {
+      display: flex; gap: 2rem;
+    }
+    .stat { }
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: .8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; }
+
+    /* Avatar */
+    .hero-avatar-wrap {
+      position: relative;
+    }
+    .hero-avatar {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 2px solid var(--border);
+      position: relative; z-index: 1;
+    }
+    .avatar-glow {
+      position: absolute; inset: -20px;
+      background: radial-gradient(circle, rgba(99,179,237,.15) 0%, transparent 70%);
+      z-index: 0;
+    }
+    .hero-float-card {
+      position: absolute;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: .65rem 1rem;
+      font-size: .78rem;
+      white-space: nowrap;
+      z-index: 2;
+    }
+    .float-card-1 { bottom: -15px; left: -30px; color: var(--accent-3); }
+    .float-card-2 { top: -15px; right: -20px; color: var(--accent); }
+
+    /* Bg decoration */
+    .bg-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(99,179,237,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,179,237,.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+    .bg-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      opacity: .12;
+    }
+    .blob-1 { width: 500px; height: 500px; background: #7c3aed; top: -100px; right: -100px; }
+    .blob-2 { width: 400px; height: 400px; background: #63b3ed; bottom: 0; left: -100px; }
+
+    /* ─── Section headers ─── */
+    .section-tag {
+      font-family: var(--font-mono);
+      font-size: .8rem;
+      color: var(--accent);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: .6rem;
+    }
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      margin-bottom: 1rem;
+    }
+    .section-intro { color: var(--text-secondary); max-width: 580px; margin-bottom: 3rem; }
+
+    /* ─── Services ─── */
+    #services { background: var(--bg-800); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      transition: transform .2s, border-color .2s;
+    }
+    .service-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+    .service-icon {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .service-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
+    .service-card p { font-size: .875rem; color: var(--text-secondary); }
+
+    /* ─── Projects ─── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform .2s, border-color .2s;
+      display: flex; flex-direction: column;
+    }
+    .project-card:hover { transform: translateY(-5px); border-color: rgba(99,179,237,.4); }
+    .project-header {
+      padding: 1.5rem 1.5rem .8rem;
+      display: flex; align-items: flex-start; justify-content: space-between;
+    }
+    .project-icon { font-size: 2rem; }
+    .project-status {
+      font-size: .7rem;
+      padding: .2rem .7rem;
+      border-radius: 99px;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+    .status-live { background: rgba(16,185,129,.15); color: #10b981; border: 1px solid rgba(16,185,129,.25); }
+    .status-building { background: rgba(251,191,36,.12); color: #fbbf24; border: 1px solid rgba(251,191,36,.25); }
+    .status-planned { background: rgba(148,163,184,.1); color: var(--text-muted); border: 1px solid var(--border); }
+    .project-body { padding: 0 1.5rem 1.2rem; flex: 1; }
+    .project-body h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
+    .project-body p { font-size: .875rem; color: var(--text-secondary); }
+    .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; padding: 0 1.5rem 1.2rem; }
+    .tag {
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      padding: .25rem .65rem;
+      background: rgba(99,179,237,.08);
+      border: 1px solid rgba(99,179,237,.15);
+      border-radius: 4px;
+      color: var(--accent);
+    }
+    .project-links {
+      display: flex; gap: .75rem;
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .project-links a {
+      font-size: .82rem;
+      display: flex; align-items: center; gap: .4rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .project-links a:hover { color: var(--accent); }
+
+    /* ─── Stack ─── */
+    #stack { background: var(--bg-800); }
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .stack-category {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .stack-category-title {
+      font-family: var(--font-mono);
+      font-size: .75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 1rem;
+    }
+    .stack-pills { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .pill {
+      font-size: .8rem;
+      padding: .3rem .75rem;
+      background: var(--bg-800);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      color: var(--text-secondary);
+    }
+
+    /* ─── Experience ─── */
+    .timeline { position: relative; padding-left: 1.5rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 0; top: 8px; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+    .timeline-item { position: relative; margin-bottom: 2.5rem; }
+    .timeline-item::before {
+      content: '';
+      position: absolute; left: -1.5rem; top: 8px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(99,179,237,.2);
+    }
+    .timeline-meta {
+      font-family: var(--font-mono);
+      font-size: .75rem;
+      color: var(--text-muted);
+      margin-bottom: .4rem;
+    }
+    .timeline-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: .2rem;
+    }
+    .timeline-company {
+      font-size: .875rem;
+      color: var(--accent);
+      margin-bottom: .6rem;
+    }
+    .timeline-desc {
+      font-size: .875rem;
+      color: var(--text-secondary);
+    }
+
+    /* ─── Contact ─── */
+    #contact { background: var(--bg-800); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-primary);
+      transition: border-color .2s, transform .2s;
+    }
+    .contact-link:hover { border-color: var(--accent); transform: translateX(4px); opacity: 1; }
+    .contact-link-icon { font-size: 1.3rem; }
+    .contact-link-text strong { display: block; font-size: .9rem; }
+    .contact-link-text span { font-size: .8rem; color: var(--text-muted); }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-form input,
+    .contact-form textarea {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: .85rem 1rem;
+      color: var(--text-primary);
+      font-family: var(--font);
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--accent); }
+    .contact-form textarea { resize: vertical; min-height: 130px; }
+
+    /* ─── Footer ─── */
+    footer {
+      background: var(--bg-900);
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+    }
+    footer p { color: var(--text-muted); font-size: .85rem; }
+    footer .footer-brand {
+      font-family: var(--font-mono);
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    /* ─── Animations ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp .6s ease forwards; }
+    .delay-1 { animation-delay: .1s; opacity: 0; }
+    .delay-2 { animation-delay: .25s; opacity: 0; }
+    .delay-3 { animation-delay: .4s; opacity: 0; }
+    .delay-4 { animation-delay: .55s; opacity: 0; }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-avatar-wrap { display: none; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links { display: none; }
+      .hero-stats { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Nav ─── -->
+  <nav aria-label="Navegación principal">
+    <div class="inner">
+      <span class="nav-logo">josebusv.github.io</span>
+      <ul class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+      </ul>
+      <a href="#contacto" class="nav-cta">Contrátame</a>
     </div>
+  </nav>
 
-    <footer class="footer">
-      <div class="footer-content">
-        <p>© 2026 José Luis Bustos Valencia</p>
-        <p class="footer-tagline">Dev Lead | Full Stack Specialist</p>
+  <!-- ─── Hero ─── -->
+  <section id="hero">
+    <div class="bg-grid"></div>
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-badge fade-up">Disponible para proyectos · Colombia &amp; Remoto</div>
+          <h1 class="fade-up delay-1">
+            Development Lead<br/>
+            <span class="accent">&amp; AI Engineer</span>
+          </h1>
+          <p class="hero-subtitle fade-up delay-2">
+            Transformo requerimientos complejos en arquitecturas escalables.
+            Especialista en integraciones empresariales, soluciones de IA y liderazgo técnico.
+          </p>
+          <div class="hero-ctas fade-up delay-3">
+            <a href="#proyectos" class="btn-primary">Ver proyectos</a>
+            <a href="#contacto" class="btn-secondary">Contrátame</a>
+          </div>
+          <div class="hero-stats fade-up delay-4">
+            <div class="stat">
+              <div class="stat-num">10+</div>
+              <div class="stat-label">Años de experiencia</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">4</div>
+              <div class="stat-label">Áreas de especialidad</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">∞</div>
+              <div class="stat-label">Integraciones críticas</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-avatar-wrap fade-up delay-2">
+          <div class="avatar-glow"></div>
+          <img
+            src="jose-luis-bustos-valencia-dev-lead.jpg"
+            alt="José Luis Bustos Valencia — Development Lead & AI Engineer"
+            class="hero-avatar"
+          />
+          <div class="hero-float-card float-card-1">✅ NetSuite · Banking APIs · VTEX</div>
+          <div class="hero-float-card float-card-2">🤖 Esp. en IA — UAM 2026</div>
+        </div>
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <style>
-      .footer {
-        background: var(--surface);
-        color: var(--text);
-        border-top: 1px solid var(--border);
-        padding: 4rem 2rem;
-      }
+  <!-- ─── Servicios ─── -->
+  <section id="servicios" aria-labelledby="servicios-title">
+    <div class="container">
+      <div class="section-tag">// servicios</div>
+      <h2 id="servicios-title">¿En qué puedo ayudarte?</h2>
+      <p class="section-intro">
+        Ofrezco soluciones end-to-end para empresas que necesitan tecnología que funcione de verdad — desde la arquitectura hasta el despliegue.
+      </p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon" style="background:rgba(99,179,237,.12);">🔗</div>
+          <h3>Integraciones ERP & APIs</h3>
+          <p>NetSuite, APIs bancarias, VTEX, TMS. Diseño e implementación de integraciones críticas que mantienen tu negocio en sincronía.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:rgba(124,58,237,.12);">🤖</div>
+          <h3>Soluciones de IA</h3>
+          <p>Chatbots empresariales, sistemas RAG, automatización con LLMs. IA aplicada que resuelve problemas reales de negocio.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:rgba(16,185,129,.12);">🏗️</div>
+          <h3>Arquitectura de Software</h3>
+          <p>Diseño de sistemas escalables, microservicios, APIs RESTful. Arquitecturas que crecen con tu negocio sin deuda técnica.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:rgba(251,191,36,.12);">⚡</div>
+          <h3>Desarrollo Full Stack</h3>
+          <p>Aplicaciones web robustas con Laravel + Python + Vue/React. Desde el backend hasta el dashboard que necesita tu equipo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      .footer-tagline {
-        color: var(--text-muted);
-        font-size: 0.9rem;
-        margin-top: 0.5rem;
-      }
-    </style>
-  </body>
+  <!-- ─── Proyectos ─── -->
+  <section id="proyectos" style="background: var(--bg-900);" aria-labelledby="proyectos-title">
+    <div class="container">
+      <div class="section-tag">// proyectos</div>
+      <h2 id="proyectos-title">Proyectos Vitrina</h2>
+      <p class="section-intro">
+        Soluciones que demuestran profundidad técnica — arquitectura real, código limpio, problemas empresariales concretos.
+      </p>
+      <div class="projects-grid">
+
+        <!-- Proyecto: AI Document Intelligence -->
+        <article class="project-card">
+          <div class="project-header">
+            <span class="project-icon">🧠</span>
+            <span class="project-status status-live">Disponible</span>
+          </div>
+          <div class="project-body">
+            <h3>AI Document Intelligence</h3>
+            <p>Sistema RAG para análisis de documentos empresariales. Procesa PDFs y responde preguntas en lenguaje natural usando LLMs locales y en cloud.</p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">LangChain</span>
+            <span class="tag">ChromaDB</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Ollama</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/josebusv/ai-document-intelligence" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              Ver código
+            </a>
+          </div>
+        </article>
+
+        <!-- Proyecto: Enterprise Integration Hub -->
+        <article class="project-card">
+          <div class="project-header">
+            <span class="project-icon">🔌</span>
+            <span class="project-status status-live">Disponible</span>
+          </div>
+          <div class="project-body">
+            <h3>Enterprise Integration Hub</h3>
+            <p>Plataforma de integración que conecta ERP, APIs bancarias y marketplaces. Abstrae la experiencia real con NetSuite y Banking APIs en un demo open source.</p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Laravel</span>
+            <span class="tag">PHP</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">REST/SOAP</span>
+            <span class="tag">Queues</span>
+            <span class="tag">Docker</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/josebusv/enterprise-integration-hub" target="_blank" rel="noopener" class="btn-project">Ver proyecto →</a>
+          </div>
+        </article>
+
+        <!-- Proyecto: OSINT Enterprise -->
+        <article class="project-card">
+          <div class="project-header">
+            <span class="project-icon">🔍</span>
+            <span class="project-status status-live">Disponible</span>
+          </div>
+          <div class="project-body">
+            <h3>OSINT Enterprise</h3>
+            <p>Plataforma modular para auditoría y monitoreo de huella digital. Parsers estructurados, scoring por conteos, dashboard multi-identidad y modo demo sin dependencias externas.</p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Streamlit</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">Docker</span>
+            <span class="tag">OSINT</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/josebusv/osint-enterprise" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              Ver código
+            </a>
+          </div>
+        </article>
+
+        <!-- Proyecto: DevOps Pipeline -->
+        <article class="project-card">
+          <div class="project-header">
+            <span class="project-icon">🚀</span>
+            <span class="project-status status-planned">Planificado</span>
+          </div>
+          <div class="project-body">
+            <h3>DevOps Pipeline Template</h3>
+            <p>Template production-ready: CI/CD con GitHub Actions, Docker multi-stage, IaC con Terraform y deployment a cloud. Documentado como guía de referencia.</p>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Docker</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">Terraform</span>
+            <span class="tag">AWS/GCP</span>
+            <span class="tag">Nginx</span>
+          </div>
+          <div class="project-links">
+            <span style="font-size:.82rem;color:var(--text-muted);">📋 En roadmap</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Stack ─── -->
+  <section id="stack" aria-labelledby="stack-title">
+    <div class="container">
+      <div class="section-tag">// tecnologías</div>
+      <h2 id="stack-title">Stack Técnico</h2>
+      <p class="section-intro">Herramientas con las que construyo soluciones reales, no solo en tutoriales.</p>
+      <div class="stack-grid">
+        <div class="stack-category">
+          <div class="stack-category-title">⚙️ Backend</div>
+          <div class="stack-pills">
+            <span class="pill">PHP</span>
+            <span class="pill">Laravel</span>
+            <span class="pill">Lumen</span>
+            <span class="pill">Python</span>
+            <span class="pill">FastAPI</span>
+            <span class="pill">REST API</span>
+            <span class="pill">SOAP</span>
+          </div>
+        </div>
+        <div class="stack-category">
+          <div class="stack-category-title">🤖 Inteligencia Artificial</div>
+          <div class="stack-pills">
+            <span class="pill">LangChain</span>
+            <span class="pill">OpenAI API</span>
+            <span class="pill">Ollama</span>
+            <span class="pill">RAG</span>
+            <span class="pill">ChromaDB</span>
+            <span class="pill">Agents</span>
+          </div>
+        </div>
+        <div class="stack-category">
+          <div class="stack-category-title">🗄️ Bases de Datos</div>
+          <div class="stack-pills">
+            <span class="pill">MySQL</span>
+            <span class="pill">MariaDB</span>
+            <span class="pill">SQLite</span>
+            <span class="pill">PostgreSQL</span>
+            <span class="pill">Redis</span>
+          </div>
+        </div>
+        <div class="stack-category">
+          <div class="stack-category-title">🏢 Enterprise</div>
+          <div class="stack-pills">
+            <span class="pill">NetSuite ERP</span>
+            <span class="pill">APIs Bancarias</span>
+            <span class="pill">VTEX</span>
+            <span class="pill">TMS</span>
+            <span class="pill">SuiteScript</span>
+          </div>
+        </div>
+        <div class="stack-category">
+          <div class="stack-category-title">☁️ DevOps & Cloud</div>
+          <div class="stack-pills">
+            <span class="pill">Docker</span>
+            <span class="pill">GitHub Actions</span>
+            <span class="pill">Terraform</span>
+            <span class="pill">AWS</span>
+            <span class="pill">GCP</span>
+            <span class="pill">Nginx</span>
+          </div>
+        </div>
+        <div class="stack-category">
+          <div class="stack-category-title">🖥️ Frontend</div>
+          <div class="stack-pills">
+            <span class="pill">JavaScript</span>
+            <span class="pill">Vue.js</span>
+            <span class="pill">React</span>
+            <span class="pill">HTML/CSS</span>
+            <span class="pill">jQuery</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Experiencia ─── -->
+  <section id="experiencia" style="background: var(--bg-900);" aria-labelledby="exp-title">
+    <div class="container">
+      <div class="section-tag">// experiencia</div>
+      <h2 id="exp-title">Trayectoria Profesional</h2>
+      <p class="section-intro">10+ años construyendo software que mueve negocios reales.</p>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-meta">Agosto 2022 — Actual</div>
+          <div class="timeline-title">Coordinador de Desarrollo</div>
+          <div class="timeline-company">Distribuciones AXA SAS · Bogotá</div>
+          <div class="timeline-desc">
+            Liderazgo técnico del equipo de desarrollo. Diseño de integraciones críticas con NetSuite ERP y APIs bancarias para gestión de recaudo. Integración con plataformas VTEX y TMS.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">Enero 2022 — Julio 2022</div>
+          <div class="timeline-title">Desarrollador Web</div>
+          <div class="timeline-company">Distribuciones AXA SAS · Bogotá</div>
+          <div class="timeline-desc">
+            Análisis de requerimientos y diseño de soluciones con PHP/Laravel. Diseño de bases de datos y documentación de arquitectura.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">Mayo 2013 — Junio 2021</div>
+          <div class="timeline-title">Desarrollador PHP Freelance</div>
+          <div class="timeline-company">CS Productions SAS · Bogotá</div>
+          <div class="timeline-desc">
+            8 años de desarrollo freelance con PHP/Laravel. Levantamiento de requerimientos, diseño, desarrollo, capacitación y soporte.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">2022 — Actual</div>
+          <div class="timeline-title">Especialización en Inteligencia Artificial</div>
+          <div class="timeline-company">Universidad Autónoma de Manizales · En curso</div>
+          <div class="timeline-desc">
+            Formación avanzada en IA aplicada a soluciones empresariales, modelos conversacionales y automatización inteligente.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Contacto ─── -->
+  <section id="contacto" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="section-tag">// contacto</div>
+      <h2 id="contact-title">¿Hablamos?</h2>
+      <p class="section-intro">
+        Disponible para proyectos freelance, consultoría técnica y posiciones de liderazgo en Colombia y remoto.
+      </p>
+      <div class="contact-grid">
+        <div>
+          <p style="color:var(--text-secondary);margin-bottom:.5rem;">Respondo en menos de 24 horas.</p>
+          <div class="contact-links">
+            <a href="mailto:josebusv@gmail.com" class="contact-link">
+              <span class="contact-link-icon">✉️</span>
+              <div class="contact-link-text">
+                <strong>Email</strong>
+                <span>josebusv@gmail.com</span>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/jose-luis-bustos-valencia/" target="_blank" rel="noopener" class="contact-link">
+              <span class="contact-link-icon">💼</span>
+              <div class="contact-link-text">
+                <strong>LinkedIn</strong>
+                <span>jose-luis-bustos-valencia</span>
+              </div>
+            </a>
+            <a href="https://github.com/josebusv" target="_blank" rel="noopener" class="contact-link">
+              <span class="contact-link-icon">⌨️</span>
+              <div class="contact-link-text">
+                <strong>GitHub</strong>
+                <span>@josebusv</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <form
+          class="contact-form"
+          action="https://formspree.io/f/xojzdzbq"
+          method="POST"
+          aria-label="Formulario de contacto"
+        >
+          <input type="text" name="nombre" placeholder="Tu nombre" required autocomplete="name" />
+          <input type="email" name="email" placeholder="Tu email" required autocomplete="email" />
+          <input type="text" name="asunto" placeholder="Asunto / tipo de proyecto" />
+          <textarea name="mensaje" placeholder="Cuéntame sobre tu proyecto…" required></textarea>
+          <button type="submit" class="btn-primary" style="border:none;cursor:pointer;">Enviar mensaje →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <div class="container">
+      <p>
+        <span class="footer-brand">José Luis Bustos Valencia</span> · Development Lead &amp; AI Engineer
+        <br/>
+        <span style="font-size:.8rem;">Bogotá, Colombia · Disponible remoto · 2026</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- ─── Scroll animation ─── -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-card, .project-card, .stack-category, .timeline-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity .5s ease, transform .5s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
 </html>
